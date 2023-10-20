@@ -22,7 +22,7 @@ def compare_files(file1, file2, threshold):
         with open(file1, 'rb') as f1, open(file2, 'rb') as f2:
             data1 = f1.read()
             data2 = f2.read()
-            similarity = sum(1 for a, b in zip(data1, data2) if a == b) / max(len(data1), len(data2))
+            similarity = sum(1 for a, b in zip(data1, data2) if a == b) / max(len(data1), len(data2)) #Разумнее всего здесь переделывать содержимое каждого из файлов в строку и решать классическую задачу на поиск НОП двух строк.
             if similarity >= threshold:
                 return 'similar'
             else:
@@ -52,8 +52,8 @@ def compare_directories(dir1, dir2, threshold):
 
 
 # Пример использования функции
-dir1 = '...'
-dir2 = '...'
+dir1 = input('Введите первую директорию:')
+dir2 = input('Введите вторую директорию:')
 threshold = float(input('Введите сходство: '))
 identical_files, similar_files, different_files1, different_files2 = compare_directories(dir1, dir2, threshold)
 print('Identical files:', *identical_files, end='\n', sep='\n')
